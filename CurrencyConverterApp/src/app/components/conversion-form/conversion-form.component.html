@@ -1,0 +1,36 @@
+<form [formGroup]="currencyConvertForm">
+    <div class="row">
+      <div class="col-2 pe-1">
+        <mat-form-field class="w-100">
+        <mat-select formControlName="baseSymbol">
+          <mat-option *ngFor="let currencySymbol of currencySymbols" [value]="currencySymbol.value">
+            {{currencySymbol.symbol}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <div class="col-10 ps-1">
+        <mat-form-field class="w-100">
+          <mat-label>Enter Value</mat-label>
+          <input matInput type="number" formControlName="baseValue">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mb-4">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+    <div class="row">
+      <div class="col-2 pe-1">
+        <mat-form-field class="w-100">
+        <mat-select formControlName="convertSymbol">
+          <mat-option *ngFor="let currencySymbol of currencySymbols" [value]="currencySymbol.value">
+            {{currencySymbol.symbol}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <div class="col-10 ps-1 d-flex mb-3 align-items-center">
+        <h2 class="m-0">{{exchangedValue}}</h2>
+      </div>
+    </div>
+  </form>
