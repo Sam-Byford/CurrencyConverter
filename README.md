@@ -14,8 +14,8 @@ The app can also be found hosted on azure - http://sambyfordcurrencyconverter.az
 
 # Limitations *
 
-Due to only having the free tier of the fixer API, all conversions that do NOT use EUR instead route to a hardcoded data table to fetch the rates. This hardcoded table is accurate as of 30/07/2023.
+Due to only having the free tier of the fixer API, all conversions that do NOT use EUR route to a hardcoded data table to fetch the rates. This hardcoded table is accurate as of 30/07/2023.
 
-Due to time constraints only 4 currencies are supported. USD, EUR, GBP and JPY. 
+Due to time constraints only 4 currencies are supported - USD, EUR, GBP and JPY. 
 
 Note that the azure link uses HTTP and not HTTPS, again this is due to the free plan limitations that mean we cannot use secure fixer API calls. Therefore the app itself must also be unsecure to use HTTP links. 
