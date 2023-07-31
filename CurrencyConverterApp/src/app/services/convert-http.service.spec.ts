@@ -33,7 +33,7 @@ describe('ConvertHttpService', () => {
     httpTestingController.expectOne({
         method: 'GET',
         url: 'http://data.fixer.io/api/latest?access_key=' + atob(environment.accessKey) + '&symbols=GBP',
-    }).flush(latestRates); //hardcoded so will always be defined   
+    }).flush(latestRates); 
   })
 
   it('should fail to get latest rate if error thrown', () => { 
