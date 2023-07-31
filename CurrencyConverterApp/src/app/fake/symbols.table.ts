@@ -1,4 +1,4 @@
-import { CurrencySymbol } from "../modals/currency-symbols";
+import { CurrencySymbol } from "../modals";
 
 export class SymbolsTable {
     public static symbols: CurrencySymbol[] = [

@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, catchError, mergeMap, of } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Currency } from 'src/app/modals/currency';
-import { CurrencySymbol } from 'src/app/modals/currency-symbols';
 import { ConvertService } from 'src/app/services/convert.service';
 import { ToastrService } from 'ngx-toastr';
+import { Currency, CurrencySymbol } from 'src/app/modals';
 
 @Component({
   selector: 'app-conversion-form',

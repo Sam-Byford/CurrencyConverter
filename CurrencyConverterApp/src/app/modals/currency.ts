@@ -1,4 +1,4 @@
-import { CurrencySymbol } from "./currency-symbols";
+import { CurrencySymbol } from ".";
 
 export type Currency = {
     value: number;

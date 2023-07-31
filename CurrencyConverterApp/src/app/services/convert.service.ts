@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
-import { Currency } from '../modals/currency';
 import { ConvertHttpService } from './convert-http.service';
-import { Rate } from '../modals/rate';
 import { round } from 'lodash-es';
-import { RatesTable } from '../fake/rates.table';
-import { SymbolsTable } from '../fake/symbols.table';
-import { CurrencySymbol } from '../modals/currency-symbols';
+import { Currency, CurrencySymbol, Rate } from '../modals';
+import { RatesTable, SymbolsTable } from '../fake';
 
 @Injectable({
   providedIn: 'root'
@@ -24,17 +21,25 @@ export class ConvertService {
   setConvertedCurrency(value: Currency) {
     return this._convertedCurrencySubject.next(value)
   }
+
+  calculateConvertedCurrency(currency: number, rate: number, currencySymbol: CurrencySymbol){
+    const convertedCurrency: Currency = {
+      value: round(currency * rate, 6),
+      currencySymbol: currencySymbol
+    } 
+    this.setConvertedCurrency(convertedCurrency)
+  }
  
   //perform conversion with latest rate from API
   convertCurrency(currency: Currency): Observable<boolean>{
     return this.convertHttpService.getLatestRate(currency.currencySymbol.value).pipe(
         map((rate: Rate) =>{
-            const convertedCurrency: Currency = {
-                value: round(currency.value * rate, 6),
-                currencySymbol: currency.currencySymbol
-            } 
-            this.setConvertedCurrency(convertedCurrency)
+          if(rate > 0)
+          {
+            this.calculateConvertedCurrency(currency.value, rate, currency.currencySymbol)
             return true
+          }
+          throw new Error("failed to fetch latest rates")
         }),
         catchError((error: Error) => {
             throw new Error("convertCurrency error: " + error.message) 
@@ -51,17 +56,13 @@ export class ConvertService {
       if (latestRates)
       {
         const rate = latestRates.rates[currency.currencySymbol.value]
-        const convertedCurrency: Currency = {
-          value: round(currency.value * rate, 6),
-          currencySymbol: currency.currencySymbol
-        }
-        this.setConvertedCurrency(convertedCurrency)
+        this.calculateConvertedCurrency(currency.value, rate, currency.currencySymbol)
         return of(true) 
       }
       throw new Error("rates not found")
     }
     catch(error){
-      throw new Error("ConvertCurrentFake - " + error)
+      throw new Error("ConvertCurrencyFake" + error)
     }
   }
 

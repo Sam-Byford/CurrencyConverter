@@ -1,4 +1,4 @@
-import { LatestRate } from "../modals/latest-rate";
+import { LatestRate } from "../modals";
 
 //Note: all rates accurate as of 30/07/2023
 
