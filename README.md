@@ -1,6 +1,6 @@
 # CurrencyConverter
 
-Currency converter app using fixer API for conversions
+Currency converter app built with Angular, using fixer API for conversions.
 
 # About
 
