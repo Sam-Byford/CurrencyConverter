@@ -4,11 +4,11 @@ Currency converter app built with Angular, using fixer API for conversions.
 
 # About
 
-The application takes user input and converts into the currency of their choice *
+The application takes user input and converts it into the currency of their choice *
 
 It uses rxjs for state management and reactive forms to handle data I/O.
 
-The application utilises jasmine unit tests to test completeness. 
+The application utilises jasmine unit tests. 
 
 The app can also be found hosted on azure - http://sambyfordcurrencyconverter.azurewebsites.net/ *
 
